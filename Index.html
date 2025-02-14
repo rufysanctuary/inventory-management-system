@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inventory Management System</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header>
+    <img src="assets/images/logo.png" alt="Organization Logo" class="logo" />
+    <h1>Inventory Management System</h1>
+    <img src="assets/images/dg.png" alt="Director General" class="dg-photo" />
+  </header>
+
+  <main>
+    <!-- Section: Enter Asset Details (Unallocated) -->
+    <section id="entrySection">
+      <h2>Enter Asset Details</h2>
+      <form id="assetEntryForm">
+        <div class="form-group">
+          <label for="assetName">Asset Name:</label>
+          <input type="text" id="assetName" required />
+        </div>
+        <div class="form-group">
+          <label for="serialNumber">Serial Number:</label>
+          <input type="text" id="serialNumber" required />
+        </div>
+        <div class="form-group">
+          <label for="assetImage">Asset Image:</label>
+          <input type="file" id="assetImage" accept="image/*" />
+        </div>
+        <button type="submit" id="assetEntrySubmit">Add Asset</button>
+      </form>
+    </section>
+
+    <!-- Section: Allocate Asset -->
+    <section id="allocationSection">
+      <h2>Allocate Asset to Staff</h2>
+      <form id="assetAllocationForm">
+        <div class="form-group">
+          <label for="staffName">Staff Name:</label>
+          <input type="text" id="staffName" required />
+        </div>
+        <div class="form-group">
+          <label for="allocatedAsset">Select Asset:</label>
+          <select id="allocatedAsset" required></select>
+        </div>
+        <div class="form-group">
+          <label for="allocationDate">Allocation Date:</label>
+          <input type="date" id="allocationDate" required />
+        </div>
+        <div class="form-group">
+          <label for="expiryDate">Expiry Date:</label>
+          <input type="date" id="expiryDate" />
+        </div>
+        <div class="form-group">
+          <label for="allocationImage">Update Asset Image (Optional):</label>
+          <input type="file" id="allocationImage" accept="image/*" />
+        </div>
+        <button type="submit" id="assetAllocationSubmit">Allocate Asset</button>
+      </form>
+    </section>
+
+    <!-- Section: Tables -->
+    <section id="tablesSection">
+      <!-- Unallocated Assets Table -->
+      <h2>Unallocated Assets</h2>
+      <input type="text" id="searchUnallocated" placeholder="Search unallocated assets..." onkeyup="searchTable('unallocatedTable', this.value)" />
+      <table id="unallocatedTable">
+        <thead>
+          <tr>
+            <th>Asset Name</th>
+            <th>Serial Number</th>
+            <th>Asset Image</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <button onclick="downloadExcel('unallocatedTable', 'Unallocated_Assets')">Download Unallocated Assets (Excel)</button>
+
+      <!-- Allocated Assets Table -->
+      <h2>Allocated Assets</h2>
+      <input type="text" id="searchAllocated" placeholder="Search allocated assets..." onkeyup="searchTable('allocatedTable', this.value)" />
+      <table id="allocatedTable">
+        <thead>
+          <tr>
+            <th>Staff Name</th>
+            <th>Asset Name</th>
+            <th>Serial Number</th>
+            <th>Asset Image</th>
+            <th>Allocation Date</th>
+            <th>Expiry Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <button onclick="downloadExcel('allocatedTable', 'Allocated_Assets')">Download Allocated Assets (Excel)</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 National Centre for Technology Management</p>
+  </footer>
+
+  <script src="assets/js/script.js"></script>
+</body>
+</html>
